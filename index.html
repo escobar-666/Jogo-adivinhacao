@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jogo de Adivinhação - Número entre 1 e 63</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="menu-hamburguer">☰</div>
+    <div id="menu-principal" class="menu-fechado">
+      <div class="menu-bloco">
+        <button id="btn-menu-config">⚙️ Configurações</button>
+        <div id="menu-config" class="menu-fechado">
+          <div class="menu-subbloco">
+            <button id="btn-menu-tema">🎨 Tema</button>
+            <div id="menu-tema" class="menu-fechado">
+              <div class="menu-subbloco">
+                <button id="btn-menu-modo">🌓 Modo</button>
+                <div id="menu-modo" class="menu-fechado menu-subbloco">
+                  <button id="btn-auto-theme">🌐 Usar Tema do Navegador</button>
+                  <button id="btn-toggle-theme">Modo Escuro</button>                  
+                </div>
+              </div>
+              <div class="menu-subbloco">
+                <button id="btn-menu-brilho">💡 Brilho</button>
+                <div id="menu-brilho" class="menu-fechado">
+                  <input type="range" id="controle-brilho" min="0" max="10" value="5" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="menu-subbloco">
+            <button id="btn-menu-idioma">🌐 Idiomas</button>
+            <div id="menu-idioma" class="menu-fechado">
+              <button class="idioma-btn" data-lang="pt">Português</button>
+              <button class="idioma-btn" data-lang="en">English</button>
+              <button class="idioma-btn" data-lang="es">Español</button>
+              <button class="idioma-btn" data-lang="fr">Français</button>
+              <button class="idioma-btn" data-lang="it">Italiano</button>
+              <button class="idioma-btn" data-lang="de">Deutsch(Alemão)</button>
+              <button class="idioma-btn" data-lang="id">Bahasa Indonesia</button>
+              <button class="idioma-btn" data-lang="ru">Русский(Russo)</button>
+              <button class="idioma-btn" data-lang="zh">中文(Mandarim)</button>
+              <button class="idioma-btn" data-lang="ja">日本語(Japonês)</button>
+              <button class="idioma-btn" data-lang="ko">한국어(Coreano)</button>
+              <button class="idioma-btn" data-lang="ar">العربية(Árabe)</button>
+              <button class="idioma-btn" data-lang="hi">हिन्दी</button>
+              <button class="idioma-btn" data-lang="bn">বাংলা</button>
+              <button class="idioma-btn" data-lang="ur">اردو</button>
+              <button class="idioma-btn" data-lang="mr">मराठी</button>
+              <button class="idioma-btn" data-lang="th">ภาษาไทย(Tailandes)</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <h1>Jogo de Adivinhação</h1>
+    <p class="description">
+      Pense em um número entre <strong>1</strong> e <strong>63</strong>. Eu irei
+      descobrir qual número você escolheu fazendo algumas perguntas simples.
+    </p>
+
+    <img id="imagem-inicial" src="img/sua_imagem_inicial.png" alt="Imagem Inicial" style="display: block; margin: 0 auto 1.5rem auto; max-width: 300px;">
+
+    <div id="explicacao" aria-label="Explicação de como funciona o jogo">
+      <p><strong>Como funciona?</strong></p>
+      <ul>
+        <li>Eu vou mostrar alguns conjuntos de números.</li>
+        <li>
+          Para cada conjunto, responda se seu número está presente clicando em
+          <strong>Sim</strong> ou <strong>Não</strong>.
+        </li>
+        <li>No final, irei adivinhar seu número baseado nas suas respostas.</li>
+      </ul>
+    </div>
+    
+    <div id="barra-progresso" aria-label="Progresso da Adivinhação"></div>
+    
+    <div id="pergunta-container"
+      aria-live="polite"
+      aria-atomic="true"
+      aria-label="Conjunto de números para responder"
+    ></div>
+
+    <div
+      class="buttons"
+      id="botoes-container"
+      role="group"
+      aria-label="Opções de resposta"
+    >
+      <button
+        id="btn-sim"
+        aria-pressed="false"
+        aria-label="Sim, meu número está neste conjunto"
+      >
+        Sim
+      </button>
+      <button
+        id="btn-nao"
+        aria-pressed="false"
+        aria-label="Não, meu número não está neste conjunto"
+      >
+        Não
+      </button>
+    </div>
+
+    <div id="resultado" role="alert" aria-live="assertive"></div>
+
+    <div class="buttons" id="reiniciar-container" style="display: none">
+      <button id="btn-reiniciar" aria-label="Reiniciar o jogo">
+        Jogar Novamente
+      </button>
+    </div>
+
+    <footer>
+      <p>©2025 Miguel Escobar — Todos os direitos reservados.</p>
+    </footer>
+
+    <div id="menu-secreto" class="menu-fechado">
+      <h3>Comandos de Teclado</h3>
+      <ul>
+        <li><strong>M</strong> - Abrir/Fechar Menu Principal</li>
+        <li><strong>C</strong> - Abrir/Fechar Configurações</li>
+        <li><strong>I</strong> - Abrir/Fechar Idiomas</li>
+        <li><strong>K</strong> - Abrir/Fechar Tema</li>
+        <li><strong>T</strong> - Alternar Modo Claro/Escuro</li>
+        <li><strong>P</strong> - Mostrar/Ocultar Barra de Progresso</li>
+        <li><strong>↑ / ↓</strong> - Navegar entre idiomas</li>
+        <li><strong>S</strong> - Responder "Sim"</li>
+        <li><strong>N</strong> - Responder "Não"</li>
+        <li><strong>R</strong> - Jogar Novamente</li>
+        <li><strong>D</strong> - Abrir/Fechar este menu de comandos</li>
+      </ul>
+      <button id="btn-fechar-secreto">Fechar</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  </body>
+</html>
